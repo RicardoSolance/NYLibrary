@@ -27,12 +27,13 @@ getCategories().then(function () {
     function printCat() {
         let card = document.createElement("div");
         card.setAttribute("class", "card");
-        let card_title = document.createElement("h2");
-        card_title = document.createTextNode(category[0].list_name)
-        let firsdate = document.createElement("p");
-        firsdate=document.createTextNode()
+        card.innerHTML = `<div class="cat-title">
+        <h2>${category[0].list_name}</h2></div>
+        <p>${category[0].oldest_date}</p>
+        <p>${category[0].last_update}</p>
+        <h4>${category[0].update}<h4>`
 
-        card.appendChild(card_title);
+    
         mainContainer.appendChild(card);
     }
     printCat();
