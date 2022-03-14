@@ -25,16 +25,20 @@ async function getCategories() {
 
 getCategories().then(function () {
     function printCat() {
-        let card = document.createElement("div");
+        for (let i = 0; i < category.length; i++) {
+            let card = document.createElement("div");
         card.setAttribute("class", "card");
         card.innerHTML = `<div class="cat-title">
-        <h2>${category[0].list_name}</h2></div>
-        <p>${category[0].oldest_date}</p>
-        <p>${category[0].last_update}</p>
-        <h4>${category[0].update}<h4>`
-
-    
+        <h2>${category[i].list_name}</h2></div>
+        <div class="cat-desc"><p> First update :${category[i].oldest_date}<p>
+        <p> Last Update : ${category[i].last_update}</p>
+        <h4>Update Frequency : s${category[i].update}<h4></div>
+        <a href="#">Read More</a>
+        `
         mainContainer.appendChild(card);
+            
+        }
+        
     }
     printCat();
 })
