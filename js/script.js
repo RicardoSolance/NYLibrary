@@ -29,6 +29,9 @@ getCategories().then(function () {
         card.setAttribute("class", "card");
         let card_title = document.createElement("h2");
         card_title = document.createTextNode(category[0].list_name)
+        let firsdate = document.createElement("p");
+        firsdate=document.createTextNode()
+
         card.appendChild(card_title);
         mainContainer.appendChild(card);
     }
