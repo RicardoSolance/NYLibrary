@@ -52,10 +52,13 @@ main {
   text-align: center;
   font-size: 20px;
 }
-.card > a {
+.card > .btn {
   text-decoration: none;
+  border: none;
+  outline: none;
   background-color: rgb(25, 25, 26);
   margin-bottom: 1em;
   padding: 8px 20px;
   color: white;
+  cursor: pointer;
 }
