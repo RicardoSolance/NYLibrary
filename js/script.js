@@ -32,12 +32,15 @@ getCategories().then(async function () {
     for (let j = 0; j < btn.length; j++) {
         btn[j].addEventListener('click', async function () {
             let link = category[j].book_cat
-            console.log(link)
+            window.loader
+            // console.log(link)
             try {
+                
                 let response2 = await fetch('https://api.nytimes.com/svc/books/v3/lists/'+link+'?api-key=9F9jhZCNCqcIbO76kMZKSEjdhAGH7vGH');
                 let data2 = await response2.json();
+                
                 let books = data2.results.books;
-                console.log(books);
+                // console.log(books);
                 books.map((book) => {
                     allBooks.push({
                         "cover": book.book_image,
@@ -48,7 +51,7 @@ getCategories().then(async function () {
                         "buy": book.amazon_product_url
                     })
                 })
-
+                
                 printBooks()
                 
             } catch (error) {
@@ -60,21 +63,25 @@ getCategories().then(async function () {
 })
 
 async function printBooks() {
-    deleteContainer()
+     deleteContainer()
+    // window.location="../pages/books.html"
+    let mainContainer = document.querySelector(".main-container");
     for (let i = 0; i < allBooks.length; i++) {
         let card = document.createElement("div");
             card.setAttribute("class", "card2");
-            card.innerHTML = `<div class="cat-title">
+            card.innerHTML = `<div class="cat-title2">
             <h2>${allBooks[i].ranking, allBooks[i].title}</h2>
+            </div>
+            <div class="cover">
             <img src="${allBooks[i].cover}" alt="">
-            <p> weeks on list :${allBooks[i].time_in_list}<p>
-            <p> Last Update : ${allBooks[i].description}</p>
-            <a href="${allBooks[i].buy}"> Buy Amazon</a>
+            </div>
+            <p>${allBooks[i].time_in_list} weeks on list<p>
+            <p class="description">  ${allBooks[i].description}</p>
+            <a href="${allBooks[i].buy}"class="btn"> Buy on Amazon</a>
             `
-    mainContainer.appendChild(card);
-        
+        mainContainer.appendChild(card);       
     }
- 
+
 }
 
 
@@ -101,4 +108,17 @@ async function printCat() {
 
 function deleteContainer() {
     mainContainer.innerHTML = '';
+}
+function loader() {
+    // let loader = document.querySelector('.loader');
+    // loader.style.display = "block"
+    // setTimeout(() => {
+    //     loader.style.display = "none"
+    // }, 4000);
+    $(window).load(function() {
+        $('#loading').hide();
+      });
+}
+function stopLoading() {
+    loader.style.display = "none"
 }
