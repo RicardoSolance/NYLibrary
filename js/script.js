@@ -2,6 +2,7 @@ let mainContainer = document.querySelector(".main-container");
 
 
 let category = [];
+ let allBooks=[]
 async function getCategories() {
     try {
         let response = await fetch('https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=9F9jhZCNCqcIbO76kMZKSEjdhAGH7vGH');
@@ -26,7 +27,7 @@ getCategories().then(async function () {
     // console.log(category)
     await printCat()
     // console.log(category.book_cat);
-    let allBooks=[]
+   
     let btn = document.querySelectorAll('.btn')
     for (let j = 0; j < btn.length; j++) {
         btn[j].addEventListener('click', async function () {
@@ -36,15 +37,19 @@ getCategories().then(async function () {
                 let response2 = await fetch('https://api.nytimes.com/svc/books/v3/lists/'+link+'?api-key=9F9jhZCNCqcIbO76kMZKSEjdhAGH7vGH');
                 let data2 = await response2.json();
                 let books = data2.results.books;
-                books.map((cat) => {
+                console.log(books);
+                books.map((book) => {
                     allBooks.push({
-                        "list_name": cat.display_name,
-                        "oldest_date": cat.oldest_published_date,
-                        "last_update": cat.newest_published_date,
-                        "book_cat": cat.list_name_encoded,
-                        "update":cat.updated
+                        "cover": book.book_image,
+                        "time_in_list": book.weeks_on_list,
+                        "description": book.description,
+                        "title": book.title,
+                        "ranking": book.rank,
+                        "buy": book.amazon_product_url
                     })
                 })
+
+                printBooks()
                 
             } catch (error) {
                 console.log(`Error : `);
@@ -53,6 +58,24 @@ getCategories().then(async function () {
         
     }  
 })
+
+async function printBooks() {
+    deleteContainer()
+    for (let i = 0; i < allBooks.length; i++) {
+        let card = document.createElement("div");
+            card.setAttribute("class", "card2");
+            card.innerHTML = `<div class="cat-title">
+            <h2>${allBooks[i].ranking, allBooks[i].title}</h2>
+            <img src="${allBooks[i].cover}" alt="">
+            <p> weeks on list :${allBooks[i].time_in_list}<p>
+            <p> Last Update : ${allBooks[i].description}</p>
+            <a href="${allBooks[i].buy}"> Buy Amazon</a>
+            `
+    mainContainer.appendChild(card);
+        
+    }
+ 
+}
 
 
 async function printCat() {
@@ -75,6 +98,7 @@ async function printCat() {
 
 
 
-// function removeContainer() {
-//     mainContainer.innerHTML = '';
-// }
+
+function deleteContainer() {
+    mainContainer.innerHTML = '';
+}

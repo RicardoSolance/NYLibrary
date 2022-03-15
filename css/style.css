@@ -40,6 +40,16 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+.card2 {
+  width: 320px;
+  height: 350px;
+  background-color: rgb(255, 254, 253);
+  display: flex;
+  margin: 5px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 .cat-title {
   /* background-color: aqua; */
   margin: 0px;
@@ -53,6 +63,16 @@ main {
   font-size: 20px;
 }
 .card > .btn {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background-color: rgb(25, 25, 26);
+  margin-bottom: 1em;
+  padding: 8px 20px;
+  color: white;
+  cursor: pointer;
+}
+.card2 > .btn {
   text-decoration: none;
   border: none;
   outline: none;
