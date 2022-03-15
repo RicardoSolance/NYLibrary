@@ -6,15 +6,15 @@ async function getCategories() {
     try {
         let response = await fetch('https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=9F9jhZCNCqcIbO76kMZKSEjdhAGH7vGH');
         let data = await response.json();
-        let books = await data.results;
+        let categ = await data.results;
         //  console.log(books);
-        books.map((book) => {
+        categ.map((cat) => {
             category.push({
-                "list_name": book.display_name,
-                "oldest_date": book.oldest_published_date,
-                "last_update": book.newest_published_date,
-                "book_cat": book.list_name_encoded,
-                "update":book.updated
+                "list_name": cat.display_name,
+                "oldest_date": cat.oldest_published_date,
+                "last_update": cat.newest_published_date,
+                "book_cat": cat.list_name_encoded,
+                "update":cat.updated
             })
         })
                
@@ -26,18 +26,26 @@ getCategories().then(async function () {
     // console.log(category)
     await printCat()
     // console.log(category.book_cat);
-    
+    let allBooks=[]
     let btn = document.querySelectorAll('.btn')
     for (let j = 0; j < btn.length; j++) {
         btn[j].addEventListener('click', async function () {
             let link = category[j].book_cat
-            const url = `https://api.nytimes.com/svc/books/v3/lists/${link}?api-key=9F9jhZCNCqcIbO76kMZKSEjdhAGH7vGH`;
-            const linkfinal = decodeURIComponent(url);
-            console.log(linkfinal);
+            console.log(link)
             try {
                 let response2 = await fetch('https://api.nytimes.com/svc/books/v3/lists/'+link+'?api-key=9F9jhZCNCqcIbO76kMZKSEjdhAGH7vGH');
                 let data2 = await response2.json();
-                console.log(data2);
+                let books = data2.results.books;
+                books.map((cat) => {
+                    allBooks.push({
+                        "list_name": cat.display_name,
+                        "oldest_date": cat.oldest_published_date,
+                        "last_update": cat.newest_published_date,
+                        "book_cat": cat.list_name_encoded,
+                        "update":cat.updated
+                    })
+                })
+                
             } catch (error) {
                 console.log(`Error : `);
             }
