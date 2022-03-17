@@ -16,6 +16,7 @@ h1 {
   margin: 0px;
   color: rgb(245, 245, 245);
 }
+
 main {
   width: 100%;
   height: 88vh;
@@ -33,6 +34,12 @@ main {
   align-items: center;
   background-color: rgb(235, 235, 235);
 }
+.title {
+  margin: 0.5em;
+  width: 100%;
+  min-height: 5px;
+  text-align: center;
+}
 .card {
   width: 320px;
   height: 350px;
@@ -46,7 +53,7 @@ main {
 }
 .card2 {
   width: 320px;
-  height: 85vh;
+  height: 70vh;
   background-color: rgb(255, 254, 253);
   display: flex;
   margin: 8px 4px;
@@ -78,12 +85,12 @@ main {
   color: white;
   cursor: pointer;
 }
-.card-btn > .btn {
+.btn {
   text-decoration: none;
   border: none;
   outline: none;
   background-color: rgb(25, 25, 26);
-  margin: 1em;
+  margin: 0.5em;
   padding: 8px 20px;
   color: white;
   cursor: pointer;
