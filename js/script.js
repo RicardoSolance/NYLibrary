@@ -69,7 +69,7 @@ async function printBooks() {
     
     // window.location="../pages/books.html"
     let mainContainer = document.querySelector(".main-container");
-
+    
     for (let i = 0; i < allBooks.length; i++) {
         let card = document.createElement("div");
             card.setAttribute("class", "card2");
@@ -83,12 +83,12 @@ async function printBooks() {
             <p class="description">  ${allBooks[i].description}</p>
             <div class="card-btn">
             <a href="${allBooks[i].buy}"class="btn"> Buy on Amazon</a>
-            <a href="#"class="btn"> like</a>
+            <a class="likebtn"><i class="fa-solid fa-thumbs-up"></i></a>
             </div>
             `
         mainContainer.appendChild(card);       
     }
-
+    await like()
 }
 
 
@@ -125,6 +125,20 @@ function loader() {
     $(window).load(function() {
         $('#loading').hide();
       });
+}
+
+async function like() {
+     let like = document.querySelectorAll('.likebtn');
+    like.forEach(lk => {
+        lk.addEventListener("click", function () {
+            
+            if (lk.style.color =="red") {
+                lk.style.color="black"
+            } else {
+                lk.style.color="red"
+            }
+        })
+    });
 }
 function stopLoading() {
     loader.style.display = "none"
