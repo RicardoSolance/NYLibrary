@@ -69,9 +69,6 @@ async function printBooks() {
     
     // window.location="../pages/books.html"
     let mainContainer = document.querySelector(".main-container");
-    let main = document.querySelector("main")
-    
-    mainContainer.innerHTML=`<a href="index.html"class="btn">Go back to Home</a>`
     
     for (let i = 0; i < allBooks.length; i++) {
         let card = document.createElement("div");
