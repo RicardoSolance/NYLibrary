@@ -46,7 +46,7 @@ main {
 }
 .card2 {
   width: 320px;
-  height: 85vh;
+  height: 70vh;
   background-color: rgb(255, 254, 253);
   display: flex;
   margin: 8px 4px;
@@ -78,12 +78,12 @@ main {
   color: white;
   cursor: pointer;
 }
-.card-btn > .btn {
+.btn {
   text-decoration: none;
   border: none;
   outline: none;
   background-color: rgb(25, 25, 26);
-  margin: 1em;
+  margin: 0.5em;
   padding: 8px 20px;
   color: white;
   cursor: pointer;
