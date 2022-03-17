@@ -32,7 +32,7 @@ getCategories().then(async function () {
     for (let j = 0; j < btn.length; j++) {
         btn[j].addEventListener('click', async function () {
             let link = category[j].book_cat
-            window.loader
+            // window.loader
             // console.log(link)
             try {
                 
@@ -63,9 +63,13 @@ getCategories().then(async function () {
 })
 
 async function printBooks() {
-     deleteContainer()
+    // window.location.href = "./pages/books.html"
+    // location.replace("./pages/books.html")
+    deleteContainer()
+    
     // window.location="../pages/books.html"
     let mainContainer = document.querySelector(".main-container");
+    
     for (let i = 0; i < allBooks.length; i++) {
         let card = document.createElement("div");
             card.setAttribute("class", "card2");
@@ -77,11 +81,14 @@ async function printBooks() {
             </div>
             <p>${allBooks[i].time_in_list} weeks on list<p>
             <p class="description">  ${allBooks[i].description}</p>
+            <div class="card-btn">
             <a href="${allBooks[i].buy}"class="btn"> Buy on Amazon</a>
+            <a class="likebtn"><i class="fa-solid fa-thumbs-up"></i></a>
+            </div>
             `
         mainContainer.appendChild(card);       
     }
-
+    await like()
 }
 
 
@@ -118,6 +125,20 @@ function loader() {
     $(window).load(function() {
         $('#loading').hide();
       });
+}
+
+async function like() {
+     let like = document.querySelectorAll('.likebtn');
+    like.forEach(lk => {
+        lk.addEventListener("click", function () {
+            
+            if (lk.style.color =="red") {
+                lk.style.color="black"
+            } else {
+                lk.style.color="red"
+            }
+        })
+    });
 }
 function stopLoading() {
     loader.style.display = "none"
