@@ -49,6 +49,22 @@ main {
   align-items: center;
   /* background-color: rgb(235, 235, 235); */
 }
+#alerta {
+  width: 400px;
+  height: 150px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  box-shadow: rgba(142, 142, 224, 0.2) 0px 7px 29px 0px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  border: 2px solid rgb(230, 230, 230);
+  top: 40%;
+  color: rgb(78, 78, 78);
+}
+
 .btnlg {
   color: rgb(255, 255, 255);
   text-decoration: none;
@@ -123,6 +139,9 @@ input[type="submit"] {
   justify-content: space-between;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.mustrate {
+  display: flex;
 }
 .cat-title {
   /* background-color: aqua; */
