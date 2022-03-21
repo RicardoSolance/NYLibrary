@@ -83,6 +83,10 @@ main {
   display: flex;
   flex-direction: column;
 }
+#formulario-log {
+  display: flex;
+  flex-direction: column;
+}
 input[type="text"],
 input[type="password"],
 input[type="email"] {
