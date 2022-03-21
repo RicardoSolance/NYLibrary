@@ -32,7 +32,8 @@ formSignup.addEventListener("submit", function (e) {
   let email = document.querySelector("#umail").value;
   if (password === password2) {
     //llamamo a la funcion de autententicacion, pasandole los valores obtenidos en el formulario de registo
-    signInUser(name,email,password)
+    signInUser(name, email, password)
+    window.location.href = "/";
     
   } else {
     alert("Las contraseñas no coinciden");

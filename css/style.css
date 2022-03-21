@@ -10,10 +10,24 @@ header {
   background-color: rgb(14, 13, 13);
   margin: 0px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: static;
+}
+.newsTitle {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.userDeatails {
+  /* background-color: aquamarine; */
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f3f3f3;
 }
 header > h3,
 h1 {
@@ -191,6 +205,21 @@ input[type="submit"] {
   transition: all 0.8 ease-in-out;
 }
 .btn:hover {
+  background-color: rgb(49, 49, 49);
+  color: rgb(255, 248, 239);
+}
+.btn2 {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background-color: rgb(212, 212, 212);
+  margin: 0.5em;
+  padding: 8px 20px;
+  color: rgb(15, 15, 15);
+  cursor: pointer;
+  transition: all 0.8 ease-in-out;
+}
+.btn2:hover {
   background-color: rgb(49, 49, 49);
   color: rgb(255, 248, 239);
 }
